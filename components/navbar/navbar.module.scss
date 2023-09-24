@@ -1,0 +1,43 @@
+.nav {
+  min-width: 446px;
+  max-height: 600px;
+  border-radius: 20px;
+
+  margin: 35px auto;
+}
+
+.navbar {
+  display: flex;
+  width: 100%;
+  gap: 5%;
+  margin-top: 20px;
+}
+
+.title {
+  color: var(--text-main);
+  width: 182px;
+  height: 58px;
+  margin-top: 80px;
+
+  font-size: 44px;
+  font-weight: 500;
+  line-height: 58px; /* 131.818% */
+}
+.text {
+  color: var(--text-light);
+  width: 318px;
+  height: 29px;
+  margin-top: 10px;
+
+  font-size: 20px;
+
+  font-weight: 400;
+  line-height: normal;
+}
+.text2 {
+  color: var(--text-main);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: normal;
+  margin-top: 60px;
+}

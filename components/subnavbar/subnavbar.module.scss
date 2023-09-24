@@ -1,0 +1,12 @@
+.subNav {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 5%;
+}
+.leftGrp {
+  display: flex;
+}
+.rightGrp {
+  margin-right: 10px;
+}

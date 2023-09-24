@@ -1,0 +1,71 @@
+.item {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+
+  flex-shrink: 0;
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.item:hover {
+  .button {
+    background-color: #fbe0dc;
+  }
+  .box {
+    border: 4px solid #fff;
+  }
+}
+.box {
+  width: 100%;
+  height: 198px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  border: 4px solid rgba(255, 255, 255, 0.6);
+}
+.active_box {
+  border: 4px solid #fbe0dc;
+}
+
+.hoveredbox {
+  width: 100%;
+  height: 198px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  border: 4px solid rgba(109, 10, 10, 0.6);
+}
+.VOTING {
+  background: url("/images/vote-table.png") center center no-repeat, #b4b7ff;
+}
+.BREEDS {
+  background: url("/images/pet-breeds.png") center center no-repeat, #97eab9;
+}
+.GALLERY {
+  background: url("/images/images-search.png") center center no-repeat, #ffd280;
+}
+.button {
+  margin-top: 10px;
+  width: 100%;
+
+  height: 36px;
+  flex-shrink: 0;
+
+  border-radius: 10px;
+
+  border: none;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px; /* 133.333% */
+  letter-spacing: 2px;
+}
+
+.button_color {
+  background: #fff;
+  color: #ff868e;
+}
+
+.active_button {
+  background: #ff868e;
+  color: #fff;
+}

@@ -6,6 +6,7 @@
   margin-left: 65px;
   border-radius: 20px;
   height: 100%;
+  position: relative;
 }
 
 .sub_container {
@@ -31,4 +32,48 @@
   flex-direction: column;
   height: 100%;
   width: 100%;
+}
+
+.grid_container {
+  position: absolute;
+  top: 10%;
+  left: 0;
+  right: 0;
+  bottom: -100px;
+  background: var(--main-back);
+  flex: 0 0 100%;
+  display: grid;
+  grid-template-columns: 226px 1fr;
+  grid-template-rows: auto auto 1fr;
+  min-height: 90%;
+  height: 90%;
+  max-height: 90%;
+  width: 100%;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.box1 {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  align-self: start;
+}
+.box2 {
+  display: flex;
+  flex-direction: column;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  width: 100%;
+  margin-top: 20px;
+  overflow-y: auto;
+}
+.flex_right {
+  display: flex;
+  text-align: center;
+  justify-content: end;
+  align-items: center;
+}
+.mr {
+  margin-right: 10px;
 }

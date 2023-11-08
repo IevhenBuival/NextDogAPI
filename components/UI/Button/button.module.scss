@@ -3,12 +3,20 @@
   justify-content: center;
   align-items: center;
   flex-grow: 0;
-  margin: 10px;
+  margin: 10px 10px;
   width: 40px;
   height: 40px;
   flex-shrink: 0;
   border-radius: 10px;
   background: #fbe0dc;
+}
+
+.btn40:hover {
+  color: #fff;
+  background: #ff868e;
+  .svg {
+    fill: #fff;
+  }
 }
 
 .btn60 {
@@ -22,19 +30,38 @@
   flex-shrink: 0;
 }
 
+.btn60:hover {
+  background: #fbe0dc;
+}
+
+.active {
+  color: #fff;
+  background: #ff868e;
+  .svg {
+    fill: #fff;
+  }
+}
+.active:hover {
+  .svg {
+    fill: #ff868e;
+  }
+}
+
 .primary {
   text-align: center;
-
   margin: 10px 0;
   min-width: 156px;
   height: 40px;
-
   flex-shrink: 0;
-
   border-radius: 10px;
   background: rgba(255, 134, 142, 1);
-
   line-height: 40px; /* 150% */
+}
+
+.m_none {
+  margin: 0;
+  color: rgba(255, 134, 142, 1);
+  background-color: #fff;
 }
 
 .primary p {
@@ -42,6 +69,7 @@
   vertical-align: middle;
   display: inline-block;
   color: #fff;
+
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
@@ -50,20 +78,28 @@
 
 .secondary {
   text-align: center;
+  color: #ff868e;
   margin: 10px 0;
   min-width: 143px;
   height: 40px;
-
   line-height: 40px; /* 150% */
   flex-shrink: 0;
   border-radius: 10px;
   background: #fbe0dc;
 }
 
+.secondary:hover {
+  color: #fff;
+  background: #ff868e;
+  .svg {
+    fill: #fff;
+  }
+}
+
 .secondary p {
   vertical-align: middle;
   display: inline-block;
-  color: #ff868e;
+
   text-align: center;
   font-size: 12px;
   font-style: normal;
@@ -71,11 +107,13 @@
   line-height: 16px; /* 133.333% */
   letter-spacing: 2px;
 }
+
 .secondary svg {
-  color: #ff868e;
   width: 15.766px;
+
   height: 16px;
   vertical-align: middle;
   display: inline-block;
   margin-right: 12px;
+  fill: #ff868e;
 }

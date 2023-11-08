@@ -23,8 +23,8 @@ const TheNavbar = () => {
     <div className={`${style.nav}`}>
       <LogoGroup />
       <h2 className={`${style.title}`}>Hi!👋</h2>
-      <p className={`${style.text}`}>Welcome to MacPaw Bootcamp 2023</p>
-      <p className={`${style.text2}`}>Lets start using The Cat API</p>
+      <p className={`${style.text}`}>Welcome to DoaApi on Next 13</p>
+      <p className={`${style.text2}`}>Lets start using The Dog API</p>
       <div className={`${style.navbar}`}>
         {items.map((i) => (
           <MenuItem key={i.title} item={i} />

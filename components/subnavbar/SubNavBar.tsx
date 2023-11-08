@@ -5,7 +5,8 @@ import { useRouter, usePathname } from "next/navigation";
 
 import { Button } from "../UI/Button/Button";
 import { getRootFromUrl } from "@/utils/getRootFromUrl";
-import Image from "next/image";
+
+import IconBack from "../howeredIcons/back";
 
 export function SubNavBar() {
   const root = getRootFromUrl(usePathname()).root;
@@ -15,13 +16,7 @@ export function SubNavBar() {
       <div className={`${style.leftGrp}`}>
         <div onClick={() => router.back()}>
           <Button href="" type="small">
-            <Image
-              src="/back-20.svg"
-              alt="back arrow"
-              width={20}
-              height={20}
-              priority
-            />
+            <IconBack />
           </Button>
         </div>
         <Button type="primary" href="">

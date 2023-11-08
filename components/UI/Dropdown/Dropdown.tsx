@@ -1,26 +1,32 @@
+"use client";
 import React from "react";
 import styles from "./dropdown.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 import { TSearchParsams } from "../../../types/searchParams";
 import { TDropdownItem } from "../../../types/dropdownItem";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
 interface IDropdown {
-  searchParams: TSearchParsams;
   paramName: string;
   valueList: TDropdownItem[];
   label: string;
 }
-export function Dropdown({
-  searchParams,
-  paramName,
-  valueList,
-  label,
-}: IDropdown) {
-  const currentValue =
-    searchParams[paramName as string] || (valueList[0].itemText as string); //[sort || "sort"];
+export function Dropdown({ paramName, valueList, label }: IDropdown) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
-  return (
+  function setSearchParam(value: string) {
+    const params = new URLSearchParams(searchParams);
+    params.set(paramName as string, value);
+    router.replace(`${pathname}?${params}`);
+  }
+
+  const currentValue =
+    searchParams.get(paramName as string) || (valueList[0].itemText as string); //[sort || "sort"];
+  /*
+  const manual = (
     <div className={styles.container}>
       <div className={styles.label}>{label}</div>
       <div className={styles.field}>
@@ -55,6 +61,35 @@ export function Dropdown({
           })}
         </ul>
       </div>
+    </div>
+  );
+  const newLink = (props: { href: string; children: React.ReactNode }) => {
+    const { href, children, ...rest } = props;
+    return (
+      <Link href={href} {...rest}>
+        {children}
+      </Link>
+    );
+  };
+  */
+  return (
+    <div className={styles.container}>
+      <div className={styles.label}>{label}</div>
+      <select
+        defaultValue={currentValue}
+        className={styles.select}
+        onChange={(e) => {
+          setSearchParam(e.target.value);
+        }}
+      >
+        {valueList.map((el) => {
+          return (
+            <option key={el.itemText} value={el.itemText}>
+              {el.itemText}
+            </option>
+          );
+        })}
+      </select>
     </div>
   );
 }

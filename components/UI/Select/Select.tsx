@@ -2,7 +2,6 @@
 import React from "react";
 import styles from "./select.module.scss";
 import { TDropdownItem } from "../../../types/dropdownItem";
-import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
 type TColor = "primary" | "secondary";
 
@@ -11,30 +10,35 @@ interface ISelect {
   valueList: TDropdownItem[];
   label: string;
   color: TColor;
+  currentValue: string;
+  callback: (name: string, value: string) => void;
 }
 
-export function Select({ paramName, valueList, label, color }: ISelect) {
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-
+export function Select({
+  paramName,
+  valueList,
+  label,
+  color,
+  currentValue,
+  callback,
+}: ISelect) {
   function setSearchParam(value: string) {
-    const params = new URLSearchParams(searchParams);
+    /*const params = new URLSearchParams(searchParams);
     params.set(paramName as string, value);
     router.replace(`${pathname}?${params}`);
+    params.set("flag", "noupdate");
+    router.push(`${pathname}?${params}`);*/
   }
-
-  const currentValue =
-    searchParams.get(paramName as string) || (valueList[0].itemText as string); //[sort || "sort"];
 
   return (
     <div className={styles.container}>
       <div className={styles.label}>{label}</div>
       <select
+        name={paramName}
         defaultValue={currentValue}
         className={`${styles[color]} ${styles.select}`}
         onChange={(e) => {
-          setSearchParam(e.target.value);
+          callback(paramName, e.target.value);
         }}
       >
         {valueList.map((el) => {

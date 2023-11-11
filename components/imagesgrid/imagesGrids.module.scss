@@ -1,0 +1,88 @@
+.flex {
+  display: flex;
+
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  margin: 20px 0;
+
+  overflow: auto;
+}
+.item {
+  position: absolute;
+  min-width: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0px 0;
+  border: 1 solid black;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.container {
+  display: grid;
+  flex-basis: 1 1 100%;
+  position: relative;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, auto);
+  grid-auto-flow: row;
+  height: calc(50dvw * 320 / 460);
+  gap: 10px;
+
+  min-width: 100%;
+  min-height: 360px;
+}
+.cell {
+  display: flex;
+  position: relative;
+  min-width: 0;
+  width: 100%;
+  background-color: white;
+}
+
+.cell2 {
+  display: block;
+  max-width: 200%;
+  width: 200%;
+}
+
+.img {
+  position: relative;
+  min-width: 0;
+  display: flex;
+}
+
+.img1 {
+  grid-area: 1/1/3/2;
+}
+
+.img2 {
+  grid-area: 1/2/2/3;
+}
+.img3 {
+  grid-area: 1/3/2/4;
+}
+.img4 {
+  grid-area: 2/2/4/4;
+}
+.img5 {
+  grid-area: 3/1/4/2;
+}
+
+.reverse_img1 {
+  grid-area: 1/1/2/2;
+}
+.reverse_img2 {
+  grid-area: 1/2/2/3;
+}
+.reverse_img3 {
+  grid-area: 1/3/3/4;
+}
+.reverse_img4 {
+  grid-area: 2/1/4/3;
+}
+
+.image {
+  object-fit: cover;
+  //cover
+}

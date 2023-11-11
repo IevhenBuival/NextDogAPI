@@ -23,7 +23,7 @@ const TheNavbar = () => {
     <div className={`${style.nav}`}>
       <LogoGroup />
       <h2 className={`${style.title}`}>Hi!👋</h2>
-      <p className={`${style.text}`}>Welcome to DoaApi on Next 13</p>
+      <p className={`${style.text}`}>Welcome to DogApi on Next 14</p>
       <p className={`${style.text2}`}>Lets start using The Dog API</p>
       <div className={`${style.navbar}`}>
         {items.map((i) => (

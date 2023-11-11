@@ -1,6 +1,7 @@
 import { SearchBar } from "@/components/searchbar/SearchBar";
 import styles from "./layout.module.scss";
 import { SubNavBar } from "@/components/subnavbar/SubNavBar";
+import StoreProvider from "../store/storeProvider";
 
 export default function PageLayout({
   children,
@@ -18,13 +19,15 @@ export default function PageLayout({
 
   return (
     <div className={`${styles.container} `}>
-      <SearchBar />
-      <div className={`${styles.grid_container}`}>
-        <div className={`${styles.box1}`}>
-          <SubNavBar />
+      <StoreProvider>
+        <SearchBar />
+        <div className={`${styles.grid_container}`}>
+          <div className={`${styles.box1}`}>
+            <SubNavBar />
+          </div>
+          {children}
         </div>
-        {children}
-      </div>
+      </StoreProvider>
     </div>
   );
 }

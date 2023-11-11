@@ -5,4 +5,5 @@ export type TDropdownItem = {
 
 export type TBreedsList = {
   name: string;
+  id: string;
 };

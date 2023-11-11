@@ -1,3 +1,3 @@
-export type TSearchParsams = {
+export type TSearchParams = {
   [key: string]: string | string[] | undefined;
 };

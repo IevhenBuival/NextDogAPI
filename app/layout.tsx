@@ -29,6 +29,7 @@ export default function RootLayout({
         <nav className={`${style.navbar}`}>
           <TheNavbar />
         </nav>
+
         <main className={`${style.main}`}>{children}</main>
       </body>
     </html>

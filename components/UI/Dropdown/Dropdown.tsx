@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./dropdown.module.scss";
 import Link from "next/link";
 import Image from "next/image";
-import { TSearchParsams } from "../../../types/searchParams";
+//import { TSearchParsams } from "../../../types/searchParams";
 import { TDropdownItem } from "../../../types/dropdownItem";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 

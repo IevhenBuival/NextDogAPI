@@ -2,11 +2,11 @@
 
 import { Button } from "../UI/Button/Button";
 import styles from "./search_bar.module.scss";
-import IconSearch from "../howeredIcons/search";
+import IconSearch from "../Icons/search";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import IconLike from "../howeredIcons/like";
-import IconFavorite from "../howeredIcons/favorite";
-import IconDislike from "../howeredIcons/dislike";
+import IconLike from "../Icons/like";
+import IconFavorite from "../Icons/favorite";
+import IconDislike from "../Icons/dislike";
 import { setSearch, setSearchInput, useSearchInput } from "@/app/store/store";
 import { useDispatch } from "react-redux";
 

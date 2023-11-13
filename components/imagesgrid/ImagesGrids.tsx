@@ -1,6 +1,12 @@
 import { TDogItem } from "@/types/dogApiTypes";
 import styles from "./imagesGrids.module.scss";
 import Image from "next/image";
+import { Button } from "../UI/Button/Button";
+
+import ClickWrapper from "../UI/Button/ClickWrapper";
+import { changeFavourite } from "@/actions/addFavourite";
+import FavouriteIcon from "../favouriteicon/FavouriteIcon";
+
 interface IImagesGrid {
   dogs: TDogItem[];
 }
@@ -18,59 +24,7 @@ const ImagesGrids = ({ dogs }: IImagesGrid) => {
     return packs;
   };
   const dogpack = getPacks();
-  /*
-  <div className={`${styles.img1}`}>
-  <div className={`${styles.cell} ${styles.img1}`}>
-    <Image
-      src={pack[0].url}
-      fill
-      loading="lazy"
-      alt={pack[0].url}
-    />
-  </div>
-</div>
-<div className={`${styles.img1}`}>
-  <div className={`${styles.cell} ${styles.img2}`}>
-    <Image
-      src={pack[1].url}
-      width={300}
-      height={300}
-      alt={pack[1].url}
-    />
-  </div>
-</div>
-<div className={`${styles.img1}`}>
-  <div className={`${styles.cell2} ${styles.img3}`}>
-    <Image
-      src={pack[1].url}
-      width={300}
-      height={300}
-      alt={pack[1].url}
-    />
-  </div>
-</div>
-<div className={`${styles.img1}`}>
-  <div className={`${styles.cell} ${styles.img4}`}>
-    <Image
-      src={pack[1].url}
-      width={600}
-      height={600}
-      alt={pack[1].url}
-    />
-  </div>
-</div>
-<div className={`${styles.img1}`}>
-  <div className={`${styles.cell1} ${styles.img5}`}>
-    <Image
-      src={pack[1].url}
-      width={300}
-      height={300}
-      alt={pack[1].url}
-    />
-  </div>
-</div>
 
-*/
   const styleByIndex = (index: number, pack: number) => {
     if (pack % 2 !== 1) {
       if (index === 0) return styles.img1;
@@ -105,8 +59,23 @@ const ImagesGrids = ({ dogs }: IImagesGrid) => {
                       className={styles.image}
                       src={dog.url}
                       fill
+                      sizes="100%"
                       alt={dog.url}
+                      priority={false}
+                      loading="lazy"
                     />
+                    <div className={styles.hover}>
+                      <ClickWrapper
+                        callback={async (path) => {
+                          "use server";
+                          return await changeFavourite(dog.id, "fav");
+                        }}
+                      >
+                        <Button type="small" href="" nomargin>
+                          <FavouriteIcon id={dog.id} />
+                        </Button>
+                      </ClickWrapper>
+                    </div>
                   </div>
                 </div>
               ))}

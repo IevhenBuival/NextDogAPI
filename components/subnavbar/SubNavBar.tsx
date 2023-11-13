@@ -6,7 +6,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { Button } from "../UI/Button/Button";
 import { getRootFromUrl } from "@/utils/getRootFromUrl";
 
-import IconBack from "../howeredIcons/back";
+import IconBack from "../Icons/back";
 
 export function SubNavBar() {
   const root = getRootFromUrl(usePathname()).root;

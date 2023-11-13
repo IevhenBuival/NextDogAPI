@@ -1,7 +1,7 @@
 import { fetchData } from "@/services/api.service";
 import { Metadata } from "next";
 import FiltersBox from "../../../components/filtersbox/FiltersBox";
-import { TBreedItem, TDogItem } from "@/types/dogApiTypes";
+import { TBreedItem, TDogItem, TFavourite } from "@/types/dogApiTypes";
 import { TSearchParams } from "@/types/searchParams";
 import { TBreedsList } from "@/types/dropdownItem";
 import ImagesGrids from "@/components/imagesgrid/ImagesGrids";
@@ -47,34 +47,14 @@ export default async function Gallery({
         .reduce((acc, val) => acc + "," + val.id, "")
         .slice(1);
       //https://api.thedogapi.com/v1/breeds/search?&q=American
-      console.log(compileReqest(searchs));
-
-      return await fetchData(compileReqest(searchs), "GET");
+      const dogs = await fetchData(compileReqest(searchs), "GET");
+      return dogs;
     } else {
-      console.log(compileReqest(""));
-
-      return await fetchData(compileReqest(""), "GET");
+      const dogs = await fetchData(compileReqest(""), "GET");
+      return dogs;
     }
   };
-  const getDogsURL = async () => {
-    if (searchParams.search) {
-      const searchedbreeds: TBreedItem[] = await fetchData(
-        "breeds/search?&q=" + (searchParams.search as string),
-        "GET"
-      );
-      const searchs = searchedbreeds
-        .reduce((acc, val) => acc + "," + val.id, "")
-        .slice(1);
-      //https://api.thedogapi.com/v1/breeds/search?&q=American
-      console.log(compileReqest(searchs));
 
-      return compileReqest(searchs);
-    } else {
-      console.log(compileReqest(""));
-
-      return compileReqest("");
-    }
-  };
   const dogs: TDogItem[] = await getDogs();
 
   const breeds: TBreedsList[] = [...(await fetchData("breeds/", "GET"))].map(
@@ -84,7 +64,6 @@ export default async function Gallery({
   return (
     <>
       <FiltersBox breeds={breeds} searchParams={searchParams} />
-      {"+" + (await getDogsURL())}
       <ImagesGrids dogs={dogs} />
     </>
   );

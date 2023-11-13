@@ -1,7 +1,7 @@
 import { Button } from "@/components/UI/Button/Button";
 import Image from "next/image";
 import styles from "../layout.module.scss";
-import IconUpload from "@/components/howeredIcons/upload";
+import IconUpload from "@/components/Icons/upload";
 
 export default function GalleryLayout({
   children,

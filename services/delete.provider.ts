@@ -1,4 +1,8 @@
-const deleteProvider = async (url: string, revalidate: number = 60) => {
+const deleteProvider = async (
+  url: string,
+  revalidate: number = 60,
+  _: null | string
+) => {
   try {
     const options: RequestInit = {
       mode: "cors",

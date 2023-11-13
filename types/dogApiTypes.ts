@@ -21,4 +21,17 @@ export type TDogItem = {
   width: number;
   height: number;
   breeds: TBreedItem[];
+  myfavourite: TFavourite[];
+};
+export type TFavourite = {
+  lenth: number;
+  id: string;
+  user_id: string;
+  image_id: string;
+  sub_id: string;
+  created_at: string;
+  image: {
+    id: string;
+    url: string;
+  };
 };

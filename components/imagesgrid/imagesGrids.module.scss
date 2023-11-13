@@ -15,8 +15,26 @@
   height: 100%;
   padding: 0px 0;
   border: 1 solid black;
-  border-radius: 5px;
+  border-radius: 20px;
   overflow: hidden;
+}
+.hover {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 134, 142, 0.6);
+  display: none;
+}
+
+.img:hover {
+  .hover {
+    display: flex;
+  }
 }
 
 .container {
@@ -31,19 +49,6 @@
 
   min-width: 100%;
   min-height: 360px;
-}
-.cell {
-  display: flex;
-  position: relative;
-  min-width: 0;
-  width: 100%;
-  background-color: white;
-}
-
-.cell2 {
-  display: block;
-  max-width: 200%;
-  width: 200%;
 }
 
 .img {
@@ -84,5 +89,5 @@
 
 .image {
   object-fit: cover;
-  //cover
+  //contain
 }

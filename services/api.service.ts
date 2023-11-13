@@ -13,7 +13,7 @@ type keyOfFetchActions = keyof typeof fetchActions;
 export const fetchData = async (
   url: string,
   method: string,
-  input = null,
+  input: string = "",
   revalidate = 60
 ) => {
   try {

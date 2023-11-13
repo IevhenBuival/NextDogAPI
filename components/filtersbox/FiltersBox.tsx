@@ -5,7 +5,7 @@ import styles from "./filterbox.module.scss";
 import { Select } from "../UI/Select/Select";
 import { TBreedsList } from "@/types/dropdownItem";
 import { Button } from "../UI/Button/Button";
-import IconUpdate from "../howeredIcons/update";
+import IconUpdate from "../Icons/update";
 import { TSearchParams } from "@/types/searchParams";
 
 import { useFilterData, setFilterData } from "../../app/store/store";

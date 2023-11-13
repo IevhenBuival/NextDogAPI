@@ -22,14 +22,6 @@ export function Select({
   currentValue,
   callback,
 }: ISelect) {
-  function setSearchParam(value: string) {
-    /*const params = new URLSearchParams(searchParams);
-    params.set(paramName as string, value);
-    router.replace(`${pathname}?${params}`);
-    params.set("flag", "noupdate");
-    router.push(`${pathname}?${params}`);*/
-  }
-
   return (
     <div className={styles.container}>
       <div className={styles.label}>{label}</div>

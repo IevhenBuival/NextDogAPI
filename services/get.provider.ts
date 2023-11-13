@@ -1,4 +1,8 @@
-const getProvider = async (url: string, revalidate: number, _: null) => {
+const getProvider = async (
+  url: string,
+  revalidate: number,
+  _: null | string
+) => {
   {
     const options: RequestInit = {
       mode: "cors",
@@ -7,7 +11,7 @@ const getProvider = async (url: string, revalidate: number, _: null) => {
         "Content-Type": "application/json",
         "x-api-key": `${process.env.NEXT_PUBLIC_API_KEY}`,
       },
-      next: { revalidate: revalidate },
+      next: { revalidate: 3600 },
     };
     const responce = await fetch(
       process.env.NEXT_PUBLIC_API_URL + url,

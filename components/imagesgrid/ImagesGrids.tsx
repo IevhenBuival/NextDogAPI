@@ -1,10 +1,6 @@
 import { TDogItem } from "@/types/dogApiTypes";
 import styles from "./imagesGrids.module.scss";
 import Image from "next/image";
-import { Button } from "../UI/Button/Button";
-
-import ClickWrapper from "../UI/Button/ClickWrapper";
-import { changeFavourite } from "@/actions/addFavourite";
 import FavouriteIcon from "../favouriteicon/FavouriteIcon";
 
 interface IImagesGrid {
@@ -65,16 +61,7 @@ const ImagesGrids = ({ dogs }: IImagesGrid) => {
                       loading="lazy"
                     />
                     <div className={styles.hover}>
-                      <ClickWrapper
-                        callback={async (path) => {
-                          "use server";
-                          return await changeFavourite(dog.id, "fav");
-                        }}
-                      >
-                        <Button type="small" href="" nomargin>
-                          <FavouriteIcon id={dog.id} />
-                        </Button>
-                      </ClickWrapper>
+                      <FavouriteIcon id={dog.id} />
                     </div>
                   </div>
                 </div>

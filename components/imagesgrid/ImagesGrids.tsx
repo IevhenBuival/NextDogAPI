@@ -2,24 +2,27 @@ import { TDogItem } from "@/types/dogApiTypes";
 import styles from "./imagesGrids.module.scss";
 import Image from "next/image";
 import FavouriteIcon from "../favouriteicon/FavouriteIcon";
+import addBlurDataUrl from "@/lib/blurDataUrl";
 
 interface IImagesGrid {
   dogs: TDogItem[];
 }
-const ImagesGrids = ({ dogs }: IImagesGrid) => {
+
+const ImagesGrids = async ({ dogs }: IImagesGrid) => {
   // const useSearchParams = useSearchParams();
-  const getPacks = () => {
+  const getPacks = async () => {
     const packCount = dogs.length / 5 - ((dogs.length / 5) % 1);
     const packs: TDogItem[][] = [];
+    const dogswithblur = await addBlurDataUrl(dogs);
 
     for (let i = 0; i < packCount; i++) {
-      packs.push(dogs.slice(i * 5, i * 5 + 5));
+      packs.push(dogswithblur.slice(i * 5, i * 5 + 5));
     }
 
     if (packCount === 0) packs.push(dogs);
     return packs;
   };
-  const dogpack = getPacks();
+  const dogpack = await getPacks();
 
   const styleByIndex = (index: number, pack: number) => {
     if (pack % 2 !== 1) {
@@ -54,6 +57,8 @@ const ImagesGrids = ({ dogs }: IImagesGrid) => {
                     <Image
                       className={styles.image}
                       src={dog.url}
+                      placeholder="blur"
+                      blurDataURL={dog.urlblur}
                       fill
                       sizes="100%"
                       alt={dog.url}

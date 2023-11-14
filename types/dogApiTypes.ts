@@ -22,6 +22,7 @@ export type TDogItem = {
   height: number;
   breeds: TBreedItem[];
   myfavourite: TFavourite[];
+  urlblur: string;
 };
 export type TFavourite = {
   lenth: number;

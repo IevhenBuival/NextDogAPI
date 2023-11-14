@@ -18,6 +18,7 @@
         "name": "next"
       }
     ],
+
     "paths": {
       "@/*": ["./*"]
     }
@@ -27,7 +28,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/ not-found.js"
+    "app/ not-found.js",
+    "./libs/*src/**/*"
   ],
   "exclude": ["node_modules"]
 }

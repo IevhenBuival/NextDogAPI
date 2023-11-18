@@ -1,10 +1,13 @@
 import { fetchData } from "@/services/api.service";
 import { Metadata } from "next";
 import FiltersBox from "../../../components/filtersbox/FiltersBox";
-import { TBreedItem, TDogItem, TFavourite } from "@/types/dogApiTypes";
+import { TBreedItem, TDogItem } from "@/types/dogApiTypes";
 import { TSearchParams } from "@/types/searchParams";
 import { TBreedsList } from "@/types/dropdownItem";
 import ImagesGrids from "@/components/imagesgrid/ImagesGrids";
+import styles from "../layout.module.scss";
+import { Button } from "@/components/UI/Button/Button";
+import IconUpload from "@/components/Icons/upload";
 
 export const metadata: Metadata = {
   title: "Dogs Gallery",
@@ -63,8 +66,26 @@ export default async function Gallery({
 
   return (
     <>
-      <FiltersBox breeds={breeds} searchParams={searchParams} />
-      <ImagesGrids dogs={dogs} />
+      <div className={styles.flex_right}>
+        <Button
+          type="secondary"
+          href={
+            "gallery/?" +
+            new URLSearchParams({
+              ...searchParams,
+              uploading: "y",
+            }).toString()
+          }
+        >
+          <IconUpload />
+
+          <p> UPLOAD</p>
+        </Button>
+      </div>
+      <div className={`${styles.box2}`}>
+        <FiltersBox breeds={breeds} searchParams={searchParams} />
+        <ImagesGrids dogs={dogs} />
+      </div>
     </>
   );
 }

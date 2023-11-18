@@ -49,6 +49,7 @@ export function Dropdown({ paramName, valueList, label }: IDropdown) {
             return (
               <li key={el.itemText}>
                 <Link
+                
                   href={`?${new URLSearchParams({
                     ...searchFilter,
                     sort: sort || "Rand",

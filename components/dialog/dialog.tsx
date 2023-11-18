@@ -1,75 +1,57 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import { useSearchParams } from "next/navigation";
-import ClickWrapper from "../UI/Button/ClickWrapper";
-import { Button } from "../UI/Button/Button";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import styles from "./dialog.module.scss";
+import { assertIsNode } from "../../utils/assertIsNode";
 
-interface DialogProps {
-  file: string;
-  onClose: () => void;
-  onSend: () => void;
+import DialogTitle from "./dialogTitle";
+
+interface IDialog {
   children: React.ReactNode;
 }
-
-export default function Dialog({
-  file,
-  onClose,
-  onSend,
-  children,
-}: DialogProps) {
+export default function Dialog({ children }: IDialog) {
   const searchParams = useSearchParams();
-  const dialogRef = useRef<null | HTMLDialogElement>(null);
+  const router = useRouter();
   const showDialog = searchParams.get("uploading");
 
+  const dialogRef = useRef<null | HTMLDialogElement>(null);
+
   useEffect(() => {
+    if (!dialogRef.current) return;
+    const dialog = dialogRef.current;
     if (showDialog === "y") {
-      dialogRef.current?.showModal();
+      dialog.showModal();
+      dialog.addEventListener("click", (e) => {
+        assertIsNode(e.target);
+        if (e.target?.nodeName === "DIALOG") {
+          handleClose();
+        }
+      });
     } else {
-      dialogRef.current?.close();
+      handleClose();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showDialog]);
 
-  const closeDialog = () => {
+  const closePath = () => {
+    const params = new URLSearchParams(searchParams);
+    params.set("uploading", "n");
+    return "gallery/?" + params.toString();
+  };
+
+  const handleClose = () => {
     dialogRef.current?.close();
-    onClose();
+    router.replace(closePath());
   };
 
   const dialog: JSX.Element | null =
     showDialog === "y" ? (
-      <dialog ref={dialogRef}>
+      <dialog aria-modal ref={dialogRef} className={styles.dialog}>
         <div className={styles.wrapper}>
-          <div className={styles.dialog}>
-            <header>
-              <h2>Upload a .jpg or .png Cat Image</h2>
-              <h3>
-                Any uploads must comply with the{" "}
-                <span className={styles.pink}>upload guidelines</span> or face
-                deletion.
-              </h3>
-            </header>
-            <main>
-              <p>
-                <span className={styles.black}>Drag here</span> your file or{" "}
-                <span className={styles.black}>Click here</span> to upload
-              </p>
-            </main>
-            <footer>
-              <p>No file selected</p>
-              <ClickWrapper
-                callback={function (path: string): void {
-                  throw new Error("Function not implemented.");
-                }}
-              >
-                <Button type={"Primary"} href={""}>
-                  UPLOAD PHOTO
-                </Button>
-              </ClickWrapper>
-              <div></div>
-            </footer>
-          </div>
+          <DialogTitle href={closePath()} />
+          {children}
         </div>
       </dialog>
     ) : null;

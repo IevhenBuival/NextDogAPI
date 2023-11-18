@@ -18,9 +18,11 @@
         "name": "next"
       }
     ],
+    "baseUrl": "./",
 
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "*.scss": ["src/types/*.*"]
     }
   },
   "include": [
@@ -29,7 +31,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "app/ not-found.js",
-    "./libs/*src/**/*"
+    "./libs/*src/**/*",
+    "components/dragAndDropField"
   ],
   "exclude": ["node_modules"]
 }

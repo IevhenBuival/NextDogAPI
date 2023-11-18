@@ -2,7 +2,7 @@ import { Button } from "@/components/UI/Button/Button";
 import Image from "next/image";
 import styles from "../layout.module.scss";
 
-export default function GalleryLayout({
+export default function BreedsLayout({
   children,
 }: {
   children: React.ReactNode;

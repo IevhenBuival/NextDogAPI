@@ -1,7 +1,5 @@
-import { Button } from "@/components/UI/Button/Button";
-import Image from "next/image";
-import styles from "../layout.module.scss";
-import IconUpload from "@/components/Icons/upload";
+import Dialog from "@/components/dialog/dialog";
+import DragAndDropField from "@/components/dragAndDropField/dragAndDropField";
 
 export default function GalleryLayout({
   children,
@@ -10,14 +8,10 @@ export default function GalleryLayout({
 }) {
   return (
     <>
-      <div className={styles.flex_right}>
-        <Button type="secondary" href="">
-          <IconUpload />
-
-          <p> UPLOAD</p>
-        </Button>
-      </div>
-      <div className={`${styles.box2}`}>{children}</div>
+      <Dialog>
+        <DragAndDropField />
+      </Dialog>
+      {children}
     </>
   );
 }

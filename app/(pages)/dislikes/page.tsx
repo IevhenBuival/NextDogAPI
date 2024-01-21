@@ -6,5 +6,9 @@ export const metadata: Metadata = {
 };
 
 export default function Dislikes() {
-  return <h1>Dislikes</h1>;
+  return (
+    <div>
+      <p>Dislikes</p>
+    </div>
+  );
 }

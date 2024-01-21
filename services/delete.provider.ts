@@ -1,7 +1,8 @@
 const deleteProvider = async (
   url: string,
   revalidate: number = 60,
-  _: null | string
+  _: null | string,
+  file?: File
 ) => {
   try {
     const options: RequestInit = {

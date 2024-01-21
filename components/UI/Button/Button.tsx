@@ -14,6 +14,8 @@ export function Button({ type, href, children, nomargin, activated }: IButton) {
     big: styles.btn60,
     primary: styles.primary,
     secondary: styles.secondary,
+    upload: styles.upload,
+    foto: styles.foto,
   };
   type ObjectKey = keyof typeof styleForType;
 

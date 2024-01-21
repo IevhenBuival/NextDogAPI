@@ -16,7 +16,7 @@ export default function DialogTitle({ href }: IDialogTitle) {
         </Button>
       </div>
       <div className={styles.centredFlex}>
-        <h2 className={styles.h2}>Upload a .jpg or .png Cat Image</h2>
+        <h2 className={styles.h2}>Upload a .jpg or .png Dog Image</h2>
         <h3 className={styles.h3}>
           Any uploads must comply with the{" "}
           <span className={styles.pink}>

@@ -1,7 +1,8 @@
 const postProvider = async (
   url: string,
   revalidate: number = 60,
-  bodydata: string
+  bodydata: string,
+  file?: File | undefined
 ) => {
   console.log(bodydata);
   const options: RequestInit = {

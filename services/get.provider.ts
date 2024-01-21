@@ -1,7 +1,8 @@
 const getProvider = async (
   url: string,
   revalidate: number,
-  _: null | string
+  _: null | string,
+  file?: File | undefined
 ) => {
   {
     const options: RequestInit = {
@@ -13,12 +14,12 @@ const getProvider = async (
       },
       next: { revalidate: 3600 },
     };
-    const responce = await fetch(
+    const response = await fetch(
       process.env.NEXT_PUBLIC_API_URL + url,
       options
     );
-    if (responce.ok) return await responce.json();
-    throw Error("GET request failed. Status:" + responce.status + " .");
+    if (response.ok) return await response.json();
+    throw Error("GET request failed. Status:" + response.status + " .");
   }
 };
 

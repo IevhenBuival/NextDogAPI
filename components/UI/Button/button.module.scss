@@ -36,6 +36,7 @@
 
 .active {
   color: #fff;
+  pointer-events: none;
   background: #ff868e;
   .svg {
     fill: #fff;

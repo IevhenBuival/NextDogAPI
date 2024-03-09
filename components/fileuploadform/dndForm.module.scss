@@ -1,0 +1,28 @@
+.imagebox {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 20px;
+  margin: 20px 40px;
+  width: 90%;
+  height: 90%;
+
+  //object-fit: cover;
+  //contain
+}
+
+.hidden {
+  display: none;
+}
+
+.image {
+  border: 2px solid inherit;
+  border-radius: 20px;
+  object-fit: cover;
+
+  // width: 90%;
+  // height: 90%;
+  //contain
+}

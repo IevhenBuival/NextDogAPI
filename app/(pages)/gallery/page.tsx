@@ -8,6 +8,7 @@ import ImagesGrids from "@/components/imagesgrid/ImagesGrids";
 import styles from "../layout.module.scss";
 import { Button } from "@/components/UI/Button/Button";
 import IconUpload from "@/components/Icons/upload";
+import React from "react";
 
 export const metadata: Metadata = {
   title: "Dogs Gallery",
@@ -76,6 +77,7 @@ export default async function Gallery({
               uploading: "y",
             }).toString()
           }
+          pending={false}
         >
           <IconUpload />
 

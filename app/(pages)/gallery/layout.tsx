@@ -1,5 +1,6 @@
-import Dialog from "@/components/dialog/dialog";
-import DragAndDropField from "@/components/dragAndDropField/dragAndDropField";
+import React from "react";
+import Dialog from "../../../components/dialog/dialog";
+import ServerUploadForm from "@/components/fileuploadform/uploadForm";
 
 export default function GalleryLayout({
   children,
@@ -9,7 +10,7 @@ export default function GalleryLayout({
   return (
     <>
       <Dialog>
-        <DragAndDropField />
+        <ServerUploadForm />
       </Dialog>
       {children}
     </>

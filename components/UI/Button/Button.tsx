@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styles from "./button.module.scss";
+import React from "react";
 
 interface IButton {
   type: string;
@@ -7,8 +8,17 @@ interface IButton {
   children: React.ReactNode;
   nomargin?: boolean;
   activated?: boolean;
+  pending: boolean;
+  tabindex?: number;
 }
-export function Button({ type, href, children, nomargin, activated }: IButton) {
+export function Button({
+  type,
+  href,
+  children,
+  nomargin,
+  activated,
+  pending = false,
+}: IButton) {
   const styleForType = {
     small: styles.btn40,
     big: styles.btn60,
@@ -20,13 +30,28 @@ export function Button({ type, href, children, nomargin, activated }: IButton) {
   type ObjectKey = keyof typeof styleForType;
 
   return (
-    <Link
-      href={href}
-      className={`${styleForType[type as ObjectKey]} ${
-        nomargin ? styles.m_none : ""
-      } ${activated ? styles.active : ""}`}
-    >
-      {children}
-    </Link>
+    <>
+      {pending ? (
+        <div
+          className={`${styleForType[type as ObjectKey]} ${
+            nomargin ? styles.m_none : ""
+          } ${activated ? styles.active : ""}`}
+        >
+          {children}
+        </div>
+      ) : (
+        <Link
+          href={href}
+          tabIndex={-1}
+          prefetch={false}
+          className={`${styleForType[type as ObjectKey]} ${
+            nomargin ? styles.m_none : ""
+          } ${activated ? styles.active : ""}`}
+          aria-disabled={pending}
+        >
+          {children}
+        </Link>
+      )}
+    </>
   );
 }

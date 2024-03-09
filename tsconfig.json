@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "moduleResolution": "node",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -8,7 +8,7 @@
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "bundler",
+    //"moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
@@ -18,21 +18,21 @@
         "name": "next"
       }
     ],
+    // "baseUrl": "./",
     "baseUrl": "./",
-
     "paths": {
       "@/*": ["./*"],
-      "*.scss": ["src/types/*.*"]
+      "*.scss": ["src/types/*.scss"]
     }
   },
+
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/ not-found.js",
-    "./libs/*src/**/*",
-    "components/dragAndDropField"
+    "app/not-found.js",
+    "./libs/*src/**/*"
   ],
   "exclude": ["node_modules"]
 }

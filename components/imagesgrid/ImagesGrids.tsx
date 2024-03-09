@@ -3,6 +3,7 @@ import styles from "./imagesGrids.module.scss";
 import Image from "next/image";
 import FavouriteIcon from "../favouriteicon/FavouriteIcon";
 import addBlurDataUrl from "@/lib/blurDataUrl";
+import BreedHoverButton from "../breedhoverbutton/breedHoverButton";
 
 interface IImagesGrid {
   dogs: TDogItem[];
@@ -65,8 +66,17 @@ const ImagesGrids = async ({ dogs }: IImagesGrid) => {
                       priority={false}
                       loading="lazy"
                     />
-                    <div className={styles.hover}>
-                      <FavouriteIcon id={dog.id} />
+
+                    <div
+                      className={`${styles.hover} ${
+                        dog.breed && styles.bottom
+                      }`}
+                    >
+                      {dog.breed ? (
+                        <BreedHoverButton breed={dog.breed} />
+                      ) : (
+                        <FavouriteIcon id={dog.id} />
+                      )}
                     </div>
                   </div>
                 </div>

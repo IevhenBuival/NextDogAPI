@@ -30,7 +30,7 @@ export default function FavouriteIcon({ id }: StateButtonProps) {
         if (res !== flag) setFlag(res);
       }}
     >
-      <Button type="small" href="" nomargin>
+      <Button type="small" href="" nomargin pending={false}>
         {flag ? <IconFavoriteFill /> : <IconFavorite />}
       </Button>
     </ClickWrapper>

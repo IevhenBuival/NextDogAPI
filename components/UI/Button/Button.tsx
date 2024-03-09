@@ -26,6 +26,7 @@ export function Button({
     secondary: styles.secondary,
     upload: styles.upload,
     foto: styles.foto,
+    breeds: styles.breeds,
   };
   type ObjectKey = keyof typeof styleForType;
 

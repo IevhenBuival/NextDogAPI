@@ -1,4 +1,5 @@
 import { Button } from "@/components/UI/Button/Button";
+import BreedsActionPanel from "@/components/breedsactionpanel/breedsActionPanel";
 import ImagesGrids from "@/components/imagesgrid/ImagesGrids";
 import { fetchData } from "@/services/api.service";
 import { TBreedItem, TDogItem } from "@/types/dogApiTypes";
@@ -58,6 +59,7 @@ export default async function Breeds() {
               
         </div> */
       }
+
       <ImagesGrids dogs={dogs} />
     </div>
   );

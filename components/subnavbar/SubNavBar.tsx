@@ -15,11 +15,11 @@ export function SubNavBar() {
     <div className={`${style.subNav}`}>
       <div className={`${style.leftGrp}`}>
         <div onClick={() => router.back()}>
-          <Button href="" type="small">
+          <Button href="" type="small" pending={false}>
             <IconBack />
           </Button>
         </div>
-        <Button type="primary" href="">
+        <Button type="primary" href="" pending={false}>
           <p>{root}</p>
         </Button>
       </div>

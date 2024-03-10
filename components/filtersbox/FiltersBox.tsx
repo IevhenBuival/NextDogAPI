@@ -135,6 +135,7 @@ export default function FiltersBox({ breeds, searchParams }: IFiltersBox) {
             //})}`}
             href=""
             nomargin
+            pending={false}
           >
             <IconUpdate />
           </Button>

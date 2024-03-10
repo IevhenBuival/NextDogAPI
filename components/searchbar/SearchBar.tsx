@@ -56,17 +56,23 @@ export function SearchBar() {
           }}
         ></input>
         <div onClick={() => handleChange(currentValue)}>
-          <Button type="small" href="">
+          <Button type="small" href="" pending={false}>
             <IconSearch />
           </Button>
         </div>
       </div>
-      <Button type="big" href="/likes" activated={SearchInPathLike()}>
+      <Button
+        type="big"
+        href="/likes"
+        pending={false}
+        activated={SearchInPathLike()}
+      >
         <IconLike />
       </Button>
       <Button
         type="big"
         href="/favourites"
+        pending={false}
         activated={
           path.search("favourites".toLocaleLowerCase()) > 0 ? true : false
         }
@@ -76,6 +82,7 @@ export function SearchBar() {
       <Button
         type="big"
         href="/dislikes"
+        pending={false}
         activated={
           path.search("dislikes".toLocaleLowerCase()) > 0 ? true : false
         }

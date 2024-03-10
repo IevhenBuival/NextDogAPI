@@ -11,7 +11,7 @@ export default function DialogTitle({ href }: IDialogTitle) {
   return (
     <section className={styles.headSection}>
       <div className={styles.exit}>
-        <Button href={href} type="small" nomargin>
+        <Button href={href} type="small" nomargin pending={false}>
           <IconCross />
         </Button>
       </div>

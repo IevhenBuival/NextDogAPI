@@ -1,9 +1,9 @@
-import { Button } from "@/components/UI/Button/Button";
 import BreedsActionPanel from "@/components/breedsactionpanel/breedsActionPanel";
 import ImagesGrids from "@/components/imagesgrid/ImagesGrids";
 import { fetchData } from "@/services/api.service";
 import { TBreedItem, TDogItem } from "@/types/dogApiTypes";
 import { Metadata } from "next";
+import styles from "@/app/(pages)/layout.module.scss";
 
 export const metadata: Metadata = {
   title: "Dogs Breeds",
@@ -33,11 +33,12 @@ export default async function Breeds() {
 
   const dogs = await getBreedsDogs();
   return (
-    <div>
-      {
-        // JSON.stringify(breeds, null, 4)
-        //
-        /*  <div className={styles.flex_right}>
+    <>
+      <div>
+        {
+          // JSON.stringify(breeds, null, 4)
+          //
+          /*  <div className={styles.flex_right}>
         <Button
           type="secondary"
           href={
@@ -58,9 +59,14 @@ export default async function Breeds() {
         <FiltersBox breeds={breeds} searchParams={searchParams} />
               
         </div> */
-      }
+        }
 
-      <ImagesGrids dogs={dogs} />
-    </div>
+        <BreedsActionPanel />
+      </div>
+      <div className={`${styles.box2}`}>
+        {" "}
+        <ImagesGrids dogs={dogs} />
+      </div>
+    </>
   );
 }

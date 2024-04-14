@@ -3,12 +3,12 @@ import { Metadata } from "next";
 import FiltersBox from "../../../components/filtersbox/FiltersBox";
 import { TBreedItem, TDogItem } from "@/types/dogApiTypes";
 import { TSearchParams } from "@/types/searchParams";
-import { TBreedsList } from "@/types/dropdownItem";
 import ImagesGrids from "@/components/imagesgrid/ImagesGrids";
 import styles from "../layout.module.scss";
 import { Button } from "@/components/UI/Button/Button";
 import IconUpload from "@/components/Icons/upload";
 import React from "react";
+import { breeds } from "@/services/breesds.service";
 
 export const metadata: Metadata = {
   title: "Dogs Gallery",
@@ -60,10 +60,6 @@ export default async function Gallery({
   };
 
   const dogs: TDogItem[] = await getDogs();
-
-  const breeds: TBreedsList[] = [...(await fetchData("breeds/", "GET"))].map(
-    (el) => ({ name: el.name, id: el.id })
-  );
 
   return (
     <>

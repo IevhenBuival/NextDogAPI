@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useTransition } from "react";
 import styles from "./filterbox.module.scss";
 
 import { Select } from "../UI/Select/Select";
@@ -19,6 +19,7 @@ interface IFiltersBox {
 }
 
 export default function FiltersBox({ breeds, searchParams }: IFiltersBox) {
+  const [isPending, startTransition] = useTransition();
   const clientSearchParams = useSearchParams();
   const pathName = usePathname();
   const Router = useRouter();
@@ -46,7 +47,7 @@ export default function FiltersBox({ breeds, searchParams }: IFiltersBox) {
   breedsDropbox.unshift({ searchParam: "none", itemText: "None" });
 
   const limitDropbox = [
-    { searchParam: "5", itemText: "5 items per pagell" },
+    { searchParam: "5", itemText: "5 items per page" },
     { searchParam: "10", itemText: "10 items per page" },
     { searchParam: "15", itemText: "15 items per page" },
     { searchParam: "20", itemText: "20 items per page" },
@@ -117,15 +118,18 @@ export default function FiltersBox({ breeds, searchParams }: IFiltersBox) {
           callback={filterCallback}
         />
         <div
+          aria-disabled={isPending}
           onClick={() => {
-            const params = new URLSearchParams(clientSearchParams);
-            filterData.limit
-              ? params.set("limit", filterData.limit)
-              : params.set("limit", "5");
-            params.set("breed", filterData.breed);
-            params.set("sort", filterData.sort);
-            params.set("type", filterData.type);
-            Router.replace(`${pathName}?${params}`);
+            startTransition(() => {
+              const params = new URLSearchParams(clientSearchParams);
+              filterData.limit
+                ? params.set("limit", filterData.limit)
+                : params.set("limit", "5");
+              params.set("breed", filterData.breed);
+              params.set("sort", filterData.sort);
+              params.set("type", filterData.type);
+              Router.replace(`${pathName}?${params}`);
+            });
           }}
         >
           <Button
@@ -135,7 +139,7 @@ export default function FiltersBox({ breeds, searchParams }: IFiltersBox) {
             //})}`}
             href=""
             nomargin
-            pending={false}
+            pending={isPending}
           >
             <IconUpdate />
           </Button>

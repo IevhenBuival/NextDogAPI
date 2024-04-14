@@ -12,6 +12,7 @@ export async function generateMetadata({
 }: TProps): Promise<Metadata> {
   return {
     title: "breed " + id,
+    description: "Breed",
   };
 }
 

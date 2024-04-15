@@ -1,6 +1,10 @@
 .container {
   width: 100%;
 }
+.container1fr {
+  width: 50%;
+  flex-basis: 1fr;
+}
 
 .label {
   color: var(--text-light);

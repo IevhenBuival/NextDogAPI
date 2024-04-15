@@ -4,6 +4,7 @@ import styles from "./select.module.scss";
 import { TDropdownItem } from "../../../types/dropdownItem";
 
 type TColor = "primary" | "secondary";
+type TSize = "container1fr" | "container";
 
 interface ISelect {
   paramName: string;
@@ -12,6 +13,7 @@ interface ISelect {
   color: TColor;
   currentValue: string;
   callback: (name: string, value: string) => void;
+  size: TSize;
 }
 
 export function Select({
@@ -21,9 +23,10 @@ export function Select({
   color,
   currentValue,
   callback,
+  size = "container",
 }: ISelect) {
   return (
-    <div className={styles.container}>
+    <div className={`${styles[size]}`}>
       <div className={styles.label}>{label}</div>
       <select
         name={paramName}

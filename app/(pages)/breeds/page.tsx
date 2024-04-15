@@ -5,6 +5,7 @@ import { TBreedItem, TDogItem } from "@/types/dogApiTypes";
 import { Metadata } from "next";
 import styles from "@/app/(pages)/layout.module.scss";
 import { TSearchParams } from "@/types/searchParams";
+import { breeds } from "../../../services/breesds.service";
 
 export const metadata: Metadata = {
   title: "Dogs Breeds",
@@ -16,30 +17,13 @@ export default async function Breeds({
 }: {
   searchParams: TSearchParams;
 }) {
-  //const breeds: TBreedItem[] = await fetchData("breeds", "GET");
-  const compileReqest = (breeds: string): string => {
-    const limit = (searchParams.limit || "5") as string;
-    const order = searchParams.sort ? "&&order=" + searchParams.sort : "";
-    const breed =
-      searchParams.breed && searchParams.breed !== "none"
-        ? "&&breed_ids=" + searchParams.breed
-        : breeds === ""
-        ? ""
-        : "&&breed_ids=" + breeds;
-    let mime_types = "";
-    if (searchParams.type === "static") mime_types = "&&mime_types=jpg,png";
-    if (searchParams.type === "animated") mime_types = "&&mime_types=gif";
-    return (
-      "images/search?format=json&&has_breeds=true&&limit=" +
-      limit +
-      order +
-      mime_types +
-      breed
-    );
-  };
-
   const ifNeedName = () => {
     if (searchParams.search && searchParams.search !== "") return true;
+    return false;
+  };
+  const isSearchBreed = () => {
+    if (searchParams.breed !== undefined && searchParams.breed !== "none")
+      return true;
     return false;
   };
   const getBreedsData = (allbreeds: TBreedItem[]) => {
@@ -60,14 +44,20 @@ export default async function Breeds({
 
     //allbreeds.forEach((el) => {
     let next = 0;
+
     while (next < allbreeds.length) {
       const el = allbreeds[next];
       next++;
       if (counter > limit) return rez;
 
       let pushing = false;
-      if (ifNeedName() === false) pushing = true;
+      if (!ifNeedName() && !isSearchBreed()) pushing = true;
 
+      if (
+        isSearchBreed() &&
+        Number(el.id) === Number(searchParams.breed as string)
+      )
+        pushing = ifNeedName() ? false : true;
       if (
         ifNeedName() &&
         el.name
@@ -88,7 +78,6 @@ export default async function Breeds({
   const getBreedsDogs = async (): Promise<TDogItem[]> => {
     // search?q=air&attach_image=1
     const allbreeds: TBreedItem[] = await fetchData(`breeds/`, "GET");
-
     const breeds = getBreedsData([...allbreeds]);
 
     //if (searchParams.breeds === "none") undefined
@@ -103,7 +92,7 @@ export default async function Breeds({
           "GET"
         ));*/
 
-    const rez = Promise.all(
+    const breedsdog = Promise.all(
       breeds.map(async (el) => {
         const dog: TDogItem = await fetchData(
           "images/" + el.reference_image_id,
@@ -112,8 +101,8 @@ export default async function Breeds({
         return { ...dog, breed: el };
       })
     );
-    // console.log("+", await rez);
-    return rez;
+
+    return breedsdog;
   };
 
   const dogs = await getBreedsDogs();

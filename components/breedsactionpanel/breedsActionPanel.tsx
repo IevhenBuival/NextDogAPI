@@ -48,7 +48,7 @@ export default function BreedsActionPanel({
           "breeds/?" +
           new URLSearchParams({
             ...searchParams,
-            order: "up",
+            order: "asc",
           }).toString()
         }
         nomargin
@@ -62,7 +62,7 @@ export default function BreedsActionPanel({
           "breeds/?" +
           new URLSearchParams({
             ...searchParams,
-            order: "down",
+            order: "desc",
           }).toString()
         }
         nomargin

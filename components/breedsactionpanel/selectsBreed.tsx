@@ -33,6 +33,7 @@ export default function SelectsBreed({ items }: ISelectsBreed) {
         color="primary"
         currentValue={(clSearchParams.get("breed") as string) || "none"}
         callback={handleClick}
+        size="container"
       />
       <Select
         paramName="limit"
@@ -41,6 +42,7 @@ export default function SelectsBreed({ items }: ISelectsBreed) {
         color="primary"
         currentValue={(clSearchParams.get("limit") as string) || "5"}
         callback={handleClick}
+        size="container1fr"
       />
     </>
   );
